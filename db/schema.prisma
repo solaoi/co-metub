@@ -63,3 +63,26 @@ model Token {
 // enum TokenType {
 //   RESET_PASSWORD
 // }
+
+model Project {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name      String
+  createdBy String
+  Stub      Stub[]
+}
+
+model Stub {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  name        String
+  url         String
+  method      String
+  contentType String
+  statusCode  String
+  body        String
+  project     Project  @relation(fields: [projectId], references: [id])
+  projectId   Int
+}
