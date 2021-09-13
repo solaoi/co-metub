@@ -68,8 +68,10 @@ model Project {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  name      String
+  name      String   @unique
+  basePath  String   @unique
   createdBy String
+  updatedBy String
   Stub      Stub[]
 }
 
@@ -77,12 +79,13 @@ model Stub {
   id          Int      @id @default(autoincrement())
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  name        String
-  url         String
+  createdBy   String
+  updatedBy   String
+  path        String
   method      String
   contentType String
   statusCode  String
-  body        String
+  response    String
   project     Project  @relation(fields: [projectId], references: [id])
   projectId   Int
 }

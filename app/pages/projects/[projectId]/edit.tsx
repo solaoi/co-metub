@@ -1,9 +1,34 @@
 import { Suspense } from "react"
-import { Head, Link, useRouter, useQuery, useMutation, useParam, BlitzPage, Routes } from "blitz"
+import { Head, useRouter, useQuery, useMutation, useParam, BlitzPage, Routes } from "blitz"
 import Layout from "app/core/layouts/Layout"
 import getProject from "app/projects/queries/getProject"
 import updateProject from "app/projects/mutations/updateProject"
 import { ProjectForm, FORM_ERROR } from "app/projects/components/ProjectForm"
+import { Spinner, Flex, Breadcrumb, BreadcrumbItem, BreadcrumbLink } from "@chakra-ui/react"
+import Card from "../../../core/layouts/Card"
+import { useCurrentUser } from "app/core/hooks/useCurrentUser"
+
+const BreadCrumb = ({ project }) => {
+  return (
+    <Breadcrumb m="2" color="#666">
+      <BreadcrumbItem>
+        <BreadcrumbLink href="/">Home</BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href="/projects">Projects</BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href={`/projects/${project.id}`}>{project.name}</BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <BreadcrumbLink href={`/projects/${project.id}/edit`}>Edit</BreadcrumbLink>
+      </BreadcrumbItem>
+    </Breadcrumb>
+  )
+}
 
 export const EditProject = () => {
   const router = useRouter()
@@ -17,40 +42,42 @@ export const EditProject = () => {
     }
   )
   const [updateProjectMutation] = useMutation(updateProject)
+  const currentUser = useCurrentUser()
 
   return (
     <>
       <Head>
-        <title>Edit Project {project.id}</title>
+        <title>プロジェクト：{project.name}</title>
       </Head>
-
       <div>
-        <h1>Edit Project {project.id}</h1>
-        <pre>{JSON.stringify(project, null, 2)}</pre>
-
-        <ProjectForm
-          submitText="Update Project"
-          // TODO use a zod schema for form validation
-          //  - Tip: extract mutation's schema into a shared `validations.ts` file and
-          //         then import and use it here
-          // schema={UpdateProject}
-          initialValues={project}
-          onSubmit={async (values) => {
-            try {
-              const updated = await updateProjectMutation({
-                id: project.id,
-                ...values,
-              })
-              await setQueryData(updated)
-              router.push(Routes.ShowProjectPage({ projectId: updated.id }))
-            } catch (error) {
-              console.error(error)
-              return {
-                [FORM_ERROR]: error.toString(),
-              }
-            }
-          }}
-        />
+        <BreadCrumb project={project} />
+        <Flex align="center" justify="center" m="6">
+          <Card heading="Edit Project">
+            <ProjectForm
+              submitText="UPDATE"
+              // TODO use a zod schema for form validation
+              //  - Tip: extract mutation's schema into a shared `validations.ts` file and
+              //         then import and use it here
+              // schema={UpdateProject}
+              initialValues={{ ...project, updatedBy: currentUser?.name }}
+              onSubmit={async (values) => {
+                try {
+                  const updated = await updateProjectMutation({
+                    id: project.id,
+                    ...values,
+                  })
+                  await setQueryData(updated)
+                  router.push(Routes.ShowProjectPage({ projectId: updated.id }))
+                } catch (error) {
+                  console.error(error)
+                  return {
+                    [FORM_ERROR]: error.toString(),
+                  }
+                }
+              }}
+            />
+          </Card>
+        </Flex>
       </div>
     </>
   )
@@ -59,15 +86,15 @@ export const EditProject = () => {
 const EditProjectPage: BlitzPage = () => {
   return (
     <div>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense
+        fallback={
+          <Flex align="center" justify="center">
+            <Spinner />
+          </Flex>
+        }
+      >
         <EditProject />
       </Suspense>
-
-      <p>
-        <Link href={Routes.ProjectsPage()}>
-          <a>Projects</a>
-        </Link>
-      </p>
     </div>
   )
 }

@@ -8,8 +8,8 @@ import {
   useQueryErrorResetBoundary,
 } from "blitz"
 import LoginForm from "app/auth/components/LoginForm"
-
-import { ChakraProvider } from "@chakra-ui/react"
+import Layout from "app/core/layouts/Layout"
+import { ChakraProvider, Flex } from "@chakra-ui/react"
 
 export default function App({ Component, pageProps }: AppProps) {
   const getLayout = Component.getLayout || ((page) => page)
@@ -28,7 +28,11 @@ export default function App({ Component, pageProps }: AppProps) {
 
 function RootErrorFallback({ error, resetErrorBoundary }: ErrorFallbackProps) {
   if (error instanceof AuthenticationError) {
-    return <LoginForm onSuccess={resetErrorBoundary} />
+    return (
+      <Layout title="Log In">
+        <LoginForm onSuccess={resetErrorBoundary} />
+      </Layout>
+    )
   } else if (error instanceof AuthorizationError) {
     return (
       <ErrorComponent

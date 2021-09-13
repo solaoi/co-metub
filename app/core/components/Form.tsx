@@ -3,6 +3,7 @@ import { Form as FinalForm, FormProps as FinalFormProps } from "react-final-form
 import { z } from "zod"
 import { validateZodSchema } from "blitz"
 export { FORM_ERROR } from "final-form"
+import { Button, Flex } from "@chakra-ui/react"
 
 export interface FormProps<S extends z.ZodType<any, any>>
   extends Omit<PropsWithoutRef<JSX.IntrinsicElements["form"]>, "onSubmit"> {
@@ -40,9 +41,17 @@ export function Form<S extends z.ZodType<any, any>>({
           )}
 
           {submitText && (
-            <button type="submit" disabled={submitting}>
-              {submitText}
-            </button>
+            <Flex align="center" justify="center">
+              <Button
+                type="submit"
+                disabled={submitting}
+                colorScheme="blue"
+                variant="solid"
+                _hover={{ bg: "blue.400", borderColor: "blue.400" }}
+              >
+                {submitText}
+              </Button>
+            </Flex>
           )}
 
           <style global jsx>{`

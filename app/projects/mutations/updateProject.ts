@@ -5,6 +5,10 @@ import { z } from "zod"
 const UpdateProject = z.object({
   id: z.number(),
   name: z.string(),
+  updatedBy: z.string(),
+  basePath: z
+    .string()
+    .regex(/^\/[^\/]+$/, { message: "The only slash allowed is at the beginning of a basePath" }),
 })
 
 export default resolver.pipe(

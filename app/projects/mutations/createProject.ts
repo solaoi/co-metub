@@ -4,6 +4,11 @@ import { z } from "zod"
 
 const CreateProject = z.object({
   name: z.string(),
+  createdBy: z.string(),
+  updatedBy: z.string(),
+  basePath: z
+    .string()
+    .regex(/^\/[^\/]+$/, { message: "The only slash allowed is at the beginning of a basePath" }),
 })
 
 export default resolver.pipe(resolver.zod(CreateProject), resolver.authorize(), async (input) => {
