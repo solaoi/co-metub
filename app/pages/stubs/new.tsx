@@ -78,6 +78,16 @@ const NewStubPage: BlitzPage = () => {
 }
 
 NewStubPage.authenticate = true
-NewStubPage.getLayout = (page) => <Layout title={"Create New Stub"}>{page}</Layout>
+NewStubPage.getLayout = (page) => (
+  <Suspense
+    fallback={
+      <Flex align="center" justify="center">
+        <Spinner />
+      </Flex>
+    }
+  >
+    <Layout title={"Create New Stub"}>{page}</Layout>
+  </Suspense>
+)
 
 export default NewStubPage

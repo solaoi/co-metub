@@ -31,43 +31,45 @@ const NewProjectPage: BlitzPage = () => {
   return (
     <>
       <BreadCrumb />
-      <Suspense
-        fallback={
-          <Flex align="center" justify="center">
-            <Spinner />
-          </Flex>
-        }
-      >
-        <Flex align="center" justify="center" m="6">
-          <Card heading="New Project">
-            <ProjectForm
-              initialValues={{ createdBy: currentUser?.name, updatedBy: currentUser?.name }}
-              submitText="ADD"
-              // TODO use a zod schema for form validation
-              //  - Tip: extract mutation's schema into a shared `validations.ts` file and
-              //         then import and use it here
-              // schema={CreateProject}
-              // initialValues={{}}
-              onSubmit={async (values) => {
-                try {
-                  const project = await createProjectMutation(values)
-                  router.push(Routes.ShowProjectPage({ projectId: project.id }))
-                } catch (error) {
-                  console.error(error)
-                  return {
-                    [FORM_ERROR]: error.toString(),
-                  }
+      <Flex align="center" justify="center" m="6">
+        <Card heading="New Project">
+          <ProjectForm
+            initialValues={{ createdBy: currentUser?.name, updatedBy: currentUser?.name }}
+            submitText="ADD"
+            // TODO use a zod schema for form validation
+            //  - Tip: extract mutation's schema into a shared `validations.ts` file and
+            //         then import and use it here
+            // schema={CreateProject}
+            // initialValues={{}}
+            onSubmit={async (values) => {
+              try {
+                const project = await createProjectMutation(values)
+                router.push(Routes.ShowProjectPage({ projectId: project.id }))
+              } catch (error) {
+                console.error(error)
+                return {
+                  [FORM_ERROR]: error.toString(),
                 }
-              }}
-            />
-          </Card>
-        </Flex>
-      </Suspense>
+              }
+            }}
+          />
+        </Card>
+      </Flex>
     </>
   )
 }
 
 NewProjectPage.authenticate = true
-NewProjectPage.getLayout = (page) => <Layout title={"Create New Project"}>{page}</Layout>
+NewProjectPage.getLayout = (page) => (
+  <Suspense
+    fallback={
+      <Flex align="center" justify="center">
+        <Spinner />
+      </Flex>
+    }
+  >
+    <Layout title={"Create New Project"}>{page}</Layout>
+  </Suspense>
+)
 
 export default NewProjectPage
