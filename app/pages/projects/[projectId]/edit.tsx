@@ -47,7 +47,7 @@ export const EditProject = () => {
   return (
     <>
       <Head>
-        <title>プロジェクト：{project.name}</title>
+        <title>Project：{project.name}</title>
       </Head>
       <div>
         <BreadCrumb project={project} />

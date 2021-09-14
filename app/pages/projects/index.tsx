@@ -175,7 +175,7 @@ const ProjectsPage: BlitzPage = () => {
   return (
     <>
       <Head>
-        <title>プロジェクト一覧</title>
+        <title>Projects</title>
       </Head>
 
       <div>
