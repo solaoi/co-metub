@@ -1,5 +1,7 @@
 # **co-metub**
 
+![license](https://img.shields.io/github/license/solaoi/co-metub)
+
 This is an application for multiple people to manage the stub APIs.
 
 ## Getting Started
