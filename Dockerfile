@@ -6,8 +6,8 @@ RUN apk add --no-cache make gcc g++ python3 libtool autoconf automake
 RUN npm ci
 
 FROM mhart/alpine-node:slim-14
-WORKDIR /data
 WORKDIR /app
+ENV PATH /app/node_modules/.bin:$PATH
 
 COPY . .
 COPY --from=builder /app/node_modules ./node_modules
@@ -15,7 +15,7 @@ COPY --from=builder /app/node_modules ./node_modules
 ENV NEXT_TELEMETRY_DISABLED 1
 ENV NODE_ENV production
 
-RUN ./node_modules/.bin/blitz prisma generate && ./node_modules/.bin/blitz build
+RUN blitz prisma generate && blitz build
 
 EXPOSE 3000
 #
@@ -25,4 +25,4 @@ EXPOSE 3000
 
 # ENTRYPOINT ["/sbin/tini", "--"]
 
-CMD ./node_modules/.bin/blitz prisma migrate deploy; ./node_modules/.bin/blitz start
+CMD blitz prisma migrate deploy; chmod -R 766 /data; blitz start
