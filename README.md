@@ -17,7 +17,7 @@ HOST_PORT=8080
 DISABLE_SECURE_COOKIES=false
 # Let's enjoy!
 docker run --init -e SESSION_SECRET_KEY="your random string of at least 32 bytes" \
--e DISABLE_SECURE_COOKIES=$DISABLE_SECURE_COOKIES
+-e DISABLE_SECURE_COOKIES=$DISABLE_SECURE_COOKIES \
 -d -p $HOST_PORT:3000 -v $(pwd)/data:/data aota/co-metub:latest
 ```
 
