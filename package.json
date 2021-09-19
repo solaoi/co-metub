@@ -1,6 +1,10 @@
 {
   "name": "co-metub",
   "version": "1.0.0",
+  "license": "MIT",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "dev": "blitz dev",
     "build": "blitz build",
