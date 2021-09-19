@@ -8,11 +8,12 @@ const UpdateStub = z.object({
   path: z.string().regex(/^\/.*[^\/]$/, {
     message: "Slashes are only allowed at the beginning of a path and in the middle of a path.",
   }),
-  method: z.enum(["GET", "POST", "PUT", "PATCH", "DELETE"]),
+  method: z.enum(["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]),
   contentType: z.enum([
     "application/json",
     "application/xml",
     "text/plain",
+    "text/json",
     "text/html",
     "text/javascript",
     "text/css",

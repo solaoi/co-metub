@@ -23,6 +23,7 @@ export function StubForm<S extends z.ZodType<any, any>>(props: FormProps<S>) {
           { value: "PUT", label: "PUT" },
           { value: "PATCH", label: "PATCH" },
           { value: "DELETE", label: "DELETE" },
+          { value: "OPTIONS", label: "OPTIONS" },
         ]}
       />
       <LabeledSelectField
@@ -33,6 +34,7 @@ export function StubForm<S extends z.ZodType<any, any>>(props: FormProps<S>) {
           { value: "application/json", label: "application/json" },
           { value: "application/xml", label: "application/xml" },
           { value: "text/plain", label: "text/plain" },
+          { value: "text/json", label: "text/json" },
           { value: "text/html", label: "text/html" },
           { value: "text/javascript", label: "text/javascript" },
           { value: "text/css", label: "text/css" },
