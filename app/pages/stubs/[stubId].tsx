@@ -49,7 +49,7 @@ const CopyUrlButton = ({ stub }) => {
   return (
     <Suspense fallback={<></>}>
       <CopyToClipboard
-        text={`${location.protocol}://${location.host}/api${project.basePath}${stub.path}`}
+        text={`${location.protocol}//${location.host}/api${project.basePath}${stub.path}`}
       >
         <Button
           mr="2"
