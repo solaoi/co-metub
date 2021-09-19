@@ -19,7 +19,7 @@ DISABLE_SECURE_COOKIES=false
 # Let's enjoy!
 docker run --init -e SESSION_SECRET_KEY="your random string of at least 32 bytes" \
 -e DISABLE_SECURE_COOKIES=$DISABLE_SECURE_COOKIES \
--d -p $HOST_PORT:3000 -v $(pwd)/data:/data aota/co-metub:latest
+-d -p $HOST_PORT:3000 -v $(pwd)/data:/data ghcr.io/solaoi/co-metub:latest
 ```
 
 #### Persist the stub data
