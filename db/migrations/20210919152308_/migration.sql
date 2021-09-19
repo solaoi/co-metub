@@ -21,7 +21,7 @@ CREATE TABLE "Session" (
     "publicData" TEXT,
     "privateData" TEXT,
     "userId" INTEGER,
-    FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE SET NULL ON UPDATE CASCADE
+    CONSTRAINT "Session_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 -- CreateTable
@@ -34,7 +34,7 @@ CREATE TABLE "Token" (
     "expiresAt" DATETIME NOT NULL,
     "sentTo" TEXT NOT NULL,
     "userId" INTEGER NOT NULL,
-    FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE CASCADE ON UPDATE CASCADE
+    CONSTRAINT "Token_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- CreateTable
@@ -61,20 +61,20 @@ CREATE TABLE "Stub" (
     "statusCode" TEXT NOT NULL,
     "response" TEXT NOT NULL,
     "projectId" INTEGER NOT NULL,
-    FOREIGN KEY ("projectId") REFERENCES "Project" ("id") ON DELETE CASCADE ON UPDATE CASCADE
+    CONSTRAINT "Stub_projectId_fkey" FOREIGN KEY ("projectId") REFERENCES "Project" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "User.email_unique" ON "User"("email");
+CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Session.handle_unique" ON "Session"("handle");
+CREATE UNIQUE INDEX "Session_handle_key" ON "Session"("handle");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Token.hashedToken_type_unique" ON "Token"("hashedToken", "type");
+CREATE UNIQUE INDEX "Token_hashedToken_type_key" ON "Token"("hashedToken", "type");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Project.name_unique" ON "Project"("name");
+CREATE UNIQUE INDEX "Project_name_key" ON "Project"("name");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Project.basePath_unique" ON "Project"("basePath");
+CREATE UNIQUE INDEX "Project_basePath_key" ON "Project"("basePath");
