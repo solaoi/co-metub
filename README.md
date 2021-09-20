@@ -59,4 +59,4 @@ You get the stub with the copy button.
 
 #### Stub
 
-<img width="912" alt="スクリーンショット 2021-09-18 0 49 41" src="https://user-images.githubusercontent.com/46414076/133817327-b7b532a3-b57c-4fb3-b8d0-f30c8d5eed0d.png">
+<img width="912" alt="スクリーンショット 2021-09-20 15 08 30" src="https://user-images.githubusercontent.com/46414076/133962354-80ac9bc8-daea-4e30-982e-39c6d4770d85.png">
