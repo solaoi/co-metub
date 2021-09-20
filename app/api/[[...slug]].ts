@@ -1,6 +1,8 @@
 import { BlitzApiRequest, BlitzApiResponse, BlitzApiHandler } from "blitz"
 import db, { prisma } from "db"
 
+const snooze = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+
 const dynamicHandler = async (method, slug) => {
   const project = await db.project.findFirst({ where: { basePath: `/${slug[0]}` } })
   if (!project) {
@@ -24,7 +26,10 @@ const Handler: BlitzApiHandler = async (req: BlitzApiRequest, res: BlitzApiRespo
   if (!obj) {
     return res.status(404).end()
   }
-  const { contentType, statusCode, response } = obj
+  const { contentType, statusCode, sleep, response } = obj
+  if (sleep !== 0) {
+    await snooze(sleep * 1000)
+  }
 
   return res.status(Number(statusCode)).setHeader("Content-Type", contentType).end(response)
 }

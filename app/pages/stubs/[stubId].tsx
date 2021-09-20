@@ -119,6 +119,7 @@ export const Stub = () => {
                   <Text mb="1">method</Text>
                   <Text mb="1">contentType</Text>
                   <Text mb="1">statusCode</Text>
+                  <Text mb="1">sleep</Text>
                   <Text>response</Text>
                 </Flex>
               </Box>
@@ -132,6 +133,7 @@ export const Stub = () => {
                   <Text mb="1">{stub.method}</Text>
                   <Text mb="1">{stub.contentType}</Text>
                   <Text mb="1">{stub.statusCode}</Text>
+                  <Text mb="1">{stub.sleep} s</Text>
                   <Box w="100%" p="2" bgColor="#3c3c3c" color="#fff" borderRadius="lg">
                     <pre style={{ whiteSpace: "pre-wrap" }}>
                       {(() => {
