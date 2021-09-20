@@ -149,6 +149,29 @@ export const Stub = () => {
               </Box>
             </Flex>
           </Box>
+          <Heading size="md" as="h3" mb="1">
+            Recent Requests
+          </Heading>
+          <Box
+            h="300"
+            overflowY="auto"
+            w="100%"
+            p="2"
+            bgColor="#3c3c3c"
+            color="#fff"
+            borderRadius="lg"
+          >
+            {stub.logs
+              ? stub.logs
+                  .split("\t")
+                  .filter((s) => s !== "")
+                  .map((l, i) => (
+                    <pre style={{ whiteSpace: "pre-wrap" }} key={"log_" + i}>
+                      {i !== 0 ? `\n${l}` : l}
+                    </pre>
+                  ))
+              : "Never been requested..."}
+          </Box>
         </Box>
       </Flex>
     </Box>

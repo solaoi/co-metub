@@ -61,6 +61,7 @@ CREATE TABLE "Stub" (
     "statusCode" TEXT NOT NULL,
     "response" TEXT NOT NULL,
     "sleep" INTEGER NOT NULL,
+    "logs" TEXT NOT NULL,
     "projectId" INTEGER NOT NULL,
     CONSTRAINT "Stub_projectId_fkey" FOREIGN KEY ("projectId") REFERENCES "Project" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );

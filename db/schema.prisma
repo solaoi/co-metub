@@ -87,6 +87,7 @@ model Stub {
   statusCode  String
   response    String
   sleep       Int
+  logs        String
   project     Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
   projectId   Int
 }
