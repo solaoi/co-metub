@@ -30,7 +30,7 @@ Your stub data will be persisted under /data in the current directory.
 
 ```sh
 # Specify the port you want to provide
-HOST_PORT=8080
+HOST_PORT=3000
 docker run --init -d -p $HOST_PORT:5555 -v $(pwd)/data:/data ghcr.io/solaoi/co-metub:latest \
 blitz prisma studio
 ```
@@ -47,7 +47,7 @@ Project is the place to manage your stubs.
 ### Create Stub
 
 <img width="912" alt="スクリーンショット 2021-09-18 0 45 59" src="https://user-images.githubusercontent.com/46414076/133816811-18560c1b-b429-483e-a180-f416c1ad8df6.png">
-<img width="912" alt="スクリーンショット 2021-09-18 0 47 31" src="https://user-images.githubusercontent.com/46414076/133817027-19130c43-015c-4da5-a68e-ff9289fda484.png">
+<img width="912" alt="スクリーンショット 2021-09-20 15 06 20" src="https://user-images.githubusercontent.com/46414076/133962240-264c2bef-dd40-4a22-a261-8e31936c9bc1.png">
 
 ### Get Stub URL
 
