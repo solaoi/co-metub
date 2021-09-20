@@ -43,6 +43,7 @@ export function StubForm<S extends z.ZodType<any, any>>(props: FormProps<S>) {
         ]}
       />
       <LabeledTextField name="statusCode" label="StatusCode" placeholder="200" />
+      <LabeledTextField type="number" name="sleep" label="Sleep(seconds)" placeholder="0" />
       <LabeledTextAreaField name="response" label="Response" placeholder="Response" />
     </Form>
   )

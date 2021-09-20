@@ -24,6 +24,7 @@ const UpdateStub = z.object({
     .string()
     .regex(/^\d{3}$/, { message: "The status code must be a three-digit number." }),
   response: z.string(),
+  sleep: z.number().min(0),
 })
 
 export default resolver.pipe(
