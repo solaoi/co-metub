@@ -98,7 +98,7 @@ export const ProjectsList = () => {
             </Button>
           </Link>
         </Flex>
-        <InputGroup w="30%">
+        <InputGroup w="30%" minW="6rem">
           <InputLeftElement pointerEvents="none">
             <SearchIcon color="gray.300" />
           </InputLeftElement>
@@ -116,33 +116,35 @@ export const ProjectsList = () => {
             }}
           />
         </InputGroup>
-        <Table variant="simple" mb={5}>
-          <Thead>
-            <Tr>
-              <Th>name</Th>
-              <Th>base-path</Th>
-              <Th>created-by</Th>
-              <Th>updated-by</Th>
-            </Tr>
-          </Thead>
-          <Tbody>
-            {projects.map((project) => (
-              <Link href={Routes.ShowProjectPage({ projectId: project.id })} key={project.id}>
-                <Tr
-                  style={{ cursor: "pointer" }}
-                  _hover={{ color: "#fff", bg: "teal.400", borderColor: "teal.400" }}
-                >
-                  <Td>{project.name}</Td>
-                  <Td>{project.basePath}</Td>
-                  <Td>{project.createdBy}</Td>
-                  <Suspense fallback={<Td></Td>}>
-                    <UpdatedBy project={project} />
-                  </Suspense>
-                </Tr>
-              </Link>
-            ))}
-          </Tbody>
-        </Table>
+        <Box overflowX="auto">
+          <Table variant="simple" mb={5}>
+            <Thead>
+              <Tr>
+                <Th>name</Th>
+                <Th>base-path</Th>
+                <Th>created-by</Th>
+                <Th>updated-by</Th>
+              </Tr>
+            </Thead>
+            <Tbody>
+              {projects.map((project) => (
+                <Link href={Routes.ShowProjectPage({ projectId: project.id })} key={project.id}>
+                  <Tr
+                    style={{ cursor: "pointer" }}
+                    _hover={{ color: "#fff", bg: "teal.400", borderColor: "teal.400" }}
+                  >
+                    <Td>{project.name}</Td>
+                    <Td>{project.basePath}</Td>
+                    <Td>{project.createdBy}</Td>
+                    <Suspense fallback={<Td></Td>}>
+                      <UpdatedBy project={project} />
+                    </Suspense>
+                  </Tr>
+                </Link>
+              ))}
+            </Tbody>
+          </Table>
+        </Box>
 
         <Flex justify="space-between">
           <Button

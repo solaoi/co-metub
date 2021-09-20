@@ -209,38 +209,40 @@ export const Project = () => {
                 </Button>
               </Link>
             </Flex>
-            <Table variant="simple" mb={5}>
-              <Thead>
-                <Tr>
-                  <Th>path</Th>
-                  <Th>method</Th>
-                  <Th>content-type</Th>
-                  <Th>status-code</Th>
-                  <Th>copy-url</Th>
-                </Tr>
-              </Thead>
-              <Tbody>
-                {stubs.map((stub) => (
-                  <Link
-                    href={Routes.ShowStubPage({ stubId: stub.id })}
-                    key={`${stub.projectId}_${stub.id}`}
-                  >
-                    <Tr
-                      style={{ cursor: "pointer" }}
-                      _hover={{ color: "#fff", bg: "teal.400", borderColor: "teal.400" }}
+            <Box overflowX="auto">
+              <Table variant="simple" mb={5}>
+                <Thead>
+                  <Tr>
+                    <Th>path</Th>
+                    <Th>method</Th>
+                    <Th>content-type</Th>
+                    <Th>status-code</Th>
+                    <Th>copy-url</Th>
+                  </Tr>
+                </Thead>
+                <Tbody>
+                  {stubs.map((stub) => (
+                    <Link
+                      href={Routes.ShowStubPage({ stubId: stub.id })}
+                      key={`${stub.projectId}_${stub.id}`}
                     >
-                      <Td>{stub.path}</Td>
-                      <Td>{stub.method}</Td>
-                      <Td>{stub.contentType}</Td>
-                      <Td>{stub.statusCode}</Td>
-                      <Td>
-                        <CopyUrlButton project={project} stub={stub} />
-                      </Td>
-                    </Tr>
-                  </Link>
-                ))}
-              </Tbody>
-            </Table>
+                      <Tr
+                        style={{ cursor: "pointer" }}
+                        _hover={{ color: "#fff", bg: "teal.400", borderColor: "teal.400" }}
+                      >
+                        <Td>{stub.path}</Td>
+                        <Td>{stub.method}</Td>
+                        <Td>{stub.contentType}</Td>
+                        <Td>{stub.statusCode}</Td>
+                        <Td>
+                          <CopyUrlButton project={project} stub={stub} />
+                        </Td>
+                      </Tr>
+                    </Link>
+                  ))}
+                </Tbody>
+              </Table>
+            </Box>
 
             <Flex justify="space-between">
               <Button
