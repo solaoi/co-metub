@@ -41,7 +41,7 @@
     "react-dom": "alpha",
     "react-final-form": "6.5.3",
     "react-icons": "4.2.0",
-    "zod": "3.8.2"
+    "zod": "3.9.1"
   },
   "devDependencies": {
     "@types/preview-email": "2.0.1",
