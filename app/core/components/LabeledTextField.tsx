@@ -37,7 +37,7 @@ export const LabeledTextField = forwardRef<HTMLInputElement, LabeledTextFieldPro
         <FormLabel>
           {label}
           {props.type === "number" ? (
-            <NumberInput {...input} disabled={submitting} {...props} ref={ref}>
+            <NumberInput {...input} disabled={submitting} {...props} ref={ref} min={0}>
               <NumberInputField />
               <NumberInputStepper>
                 <NumberIncrementStepper />
