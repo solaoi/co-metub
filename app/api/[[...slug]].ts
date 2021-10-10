@@ -26,10 +26,25 @@ const Handler: BlitzApiHandler = async (req: BlitzApiRequest, res: BlitzApiRespo
   if (!obj) {
     return res.status(404).end()
   }
-  const { id, contentType, statusCode, sleep, response, logs } = obj
-  if (sleep !== 0) {
-    await snooze(sleep * 1000)
-  }
+  const {
+    id,
+    contentType,
+    statusCode,
+    sleep,
+    response,
+    logs,
+    ntimesError,
+    ntimesErrorStatusCode,
+    ntimesErrorCounter,
+  } = obj
+
+  const ntimesErrorCount = (() => {
+    if (ntimesError === 0 || ntimesError === ntimesErrorCounter) {
+      return 0
+    } else {
+      return ntimesErrorCounter + 1
+    }
+  })()
 
   const RECENT_LOGS = 3
   const { slug: _, ...query } = req.query
@@ -55,8 +70,25 @@ const Handler: BlitzApiHandler = async (req: BlitzApiRequest, res: BlitzApiRespo
     log,
     ...logArr.filter((_, i) => logArr.length < RECENT_LOGS || i !== logArr.length - 1),
   ].join("\t")
-  await db.stub.update({ where: { id }, data: { logs: updatedLogs } })
 
+  const inNtimesErrorTerm = ntimesError > 0 && ntimesError >= ntimesErrorCounter + 1
+  const sleepFunc = async () => {
+    if (!inNtimesErrorTerm && sleep !== 0) {
+      return snooze(sleep * 1000)
+    }
+  }
+
+  await Promise.all([
+    sleepFunc(),
+    db.stub.update({
+      where: { id },
+      data: { logs: updatedLogs, ntimesErrorCounter: ntimesErrorCount },
+    }),
+  ])
+
+  if (inNtimesErrorTerm) {
+    return res.status(Number(ntimesErrorStatusCode)).end()
+  }
   return res.status(Number(statusCode)).setHeader("Content-Type", contentType).end(response)
 }
 

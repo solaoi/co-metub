@@ -5,6 +5,8 @@ import { LabeledSelectField } from "app/core/components/LabeledSelectField"
 import { useRouterQuery } from "blitz"
 import { z } from "zod"
 export { FORM_ERROR } from "app/core/components/Form"
+import Card from "../../core/layouts/Card"
+import { border } from "@chakra-ui/styled-system"
 
 export function StubForm<S extends z.ZodType<any, any>>(props: FormProps<S>) {
   const query = useRouterQuery()
@@ -43,8 +45,29 @@ export function StubForm<S extends z.ZodType<any, any>>(props: FormProps<S>) {
         ]}
       />
       <LabeledTextField name="statusCode" label="StatusCode" placeholder="200" />
-      <LabeledTextField type="number" name="sleep" label="Sleep(seconds)" placeholder="0" />
       <LabeledTextAreaField name="response" label="Response" placeholder="Response" />
+      <Card heading="Optional" bgColor="#E2E8F0">
+        <LabeledTextField
+          type="number"
+          name="sleep"
+          label="Sleep(seconds)"
+          placeholder="0"
+          style={{ borderColor: "#FFF" }}
+        />
+        <LabeledTextField
+          type="number"
+          name="ntimesError"
+          label="NtimesError"
+          placeholder="0"
+          style={{ borderColor: "#FFF" }}
+        />
+        <LabeledTextField
+          name="ntimesErrorStatusCode"
+          label="NtimesErrorStatusCode"
+          placeholder="500"
+          style={{ borderColor: "#FFF" }}
+        />
+      </Card>
     </Form>
   )
 }

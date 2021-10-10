@@ -2,6 +2,13 @@ import { forwardRef, PropsWithoutRef, ComponentPropsWithoutRef } from "react"
 import { useField } from "react-final-form"
 
 import { Input } from "@chakra-ui/input"
+import {
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+  NumberIncrementStepper,
+  NumberDecrementStepper,
+} from "@chakra-ui/react"
 import { FormControl, FormLabel } from "@chakra-ui/form-control"
 
 export interface LabeledTextFieldProps extends ComponentPropsWithoutRef<typeof Input> {
@@ -29,7 +36,17 @@ export const LabeledTextField = forwardRef<HTMLInputElement, LabeledTextFieldPro
       <FormControl {...outerProps}>
         <FormLabel>
           {label}
-          <Input {...input} disabled={submitting} {...props} ref={ref} />
+          {props.type === "number" ? (
+            <NumberInput {...input} disabled={submitting} {...props} ref={ref}>
+              <NumberInputField />
+              <NumberInputStepper>
+                <NumberIncrementStepper />
+                <NumberDecrementStepper />
+              </NumberInputStepper>
+            </NumberInput>
+          ) : (
+            <Input {...input} disabled={submitting} {...props} ref={ref} />
+          )}
         </FormLabel>
         {touched && normalizedError && (
           <div role="alert" style={{ color: "red" }}>
