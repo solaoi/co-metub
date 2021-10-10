@@ -52,7 +52,13 @@ const NewStubPage: BlitzPage = () => {
       <Flex align="center" justify="center" m="6">
         <Card heading="New Stub">
           <StubForm
-            initialValues={{ createdBy: currentUser?.name, updatedBy: currentUser?.name, sleep: 0 }}
+            initialValues={{
+              createdBy: currentUser?.name,
+              updatedBy: currentUser?.name,
+              sleep: 0,
+              ntimesError: 0,
+              ntimesErrorStatusCode: "500",
+            }}
             submitText="ADD"
             // TODO use a zod schema for form validation
             //  - Tip: extract mutation's schema into a shared `validations.ts` file and

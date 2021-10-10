@@ -70,7 +70,10 @@ export const EditStub = () => {
         <Flex align="center" justify="center" m="6">
           <Card heading="Edit Stub">
             <StubForm
-              initialValues={{ ...stub, updatedBy: currentUser?.name }}
+              initialValues={{
+                ...stub,
+                updatedBy: currentUser?.name,
+              }}
               submitText="UPDATE"
               // TODO use a zod schema for form validation
               //  - Tip: extract mutation's schema into a shared `validations.ts` file and

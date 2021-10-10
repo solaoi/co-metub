@@ -111,29 +111,77 @@ export const Stub = () => {
             <Flex justify="space-between">
               <Box flex="1">
                 <Flex direction="column" fontWeight="bold" color="#666">
-                  <Text mb="1">path</Text>
-                  <Text mb="1">createdBy</Text>
-                  <Text mb="1">createdAt</Text>
-                  <Text mb="1">updatedBy</Text>
-                  <Text mb="1">updatedAt</Text>
-                  <Text mb="1">method</Text>
-                  <Text mb="1">contentType</Text>
-                  <Text mb="1">statusCode</Text>
-                  <Text mb="1">sleep</Text>
+                  <Text mb="1" h="1.5rem">
+                    path
+                  </Text>
+                  <Text mb="1" h="1.5rem">
+                    createdBy
+                  </Text>
+                  <Text mb="1" h="1.5rem">
+                    createdAt
+                  </Text>
+                  <Text mb="1" h="1.5rem">
+                    updatedBy
+                  </Text>
+                  <Text mb="1" h="1.5rem">
+                    updatedAt
+                  </Text>
+                  <Text mb="1" h="1.5rem">
+                    method
+                  </Text>
+                  <Text mb="1" h="1.5rem">
+                    contentType
+                  </Text>
+                  <Text mb="1" h="1.5rem">
+                    statusCode
+                  </Text>
+                  <Text mb="1" h="1.5rem">
+                    sleep
+                  </Text>
+                  <Text mb="1" h="1.5rem">
+                    ntimesError
+                  </Text>
+                  <Text mb="1" h="1.5rem">
+                    ntimesErrorStatusCode
+                  </Text>
                   <Text>response</Text>
                 </Flex>
               </Box>
               <Box flex="2">
                 <Flex direction="column">
-                  <Text mb="1">{stub.path}</Text>
-                  <Text mb="1">{stub.createdBy}</Text>
-                  <Text mb="1">{stub.createdAt.toLocaleString()}</Text>
-                  <Text mb="1">{stub.updatedBy}</Text>
-                  <Text mb="1">{stub.updatedAt.toLocaleString()}</Text>
-                  <Text mb="1">{stub.method}</Text>
-                  <Text mb="1">{stub.contentType}</Text>
-                  <Text mb="1">{stub.statusCode}</Text>
-                  <Text mb="1">{stub.sleep} s</Text>
+                  <Text mb="1" h="1.5rem">
+                    {stub.path}
+                  </Text>
+                  <Text mb="1" h="1.5rem">
+                    {stub.createdBy}
+                  </Text>
+                  <Text mb="1" h="1.5rem">
+                    {stub.createdAt.toLocaleString()}
+                  </Text>
+                  <Text mb="1" h="1.5rem">
+                    {stub.updatedBy}
+                  </Text>
+                  <Text mb="1" h="1.5rem">
+                    {stub.updatedAt.toLocaleString()}
+                  </Text>
+                  <Text mb="1" h="1.5rem">
+                    {stub.method}
+                  </Text>
+                  <Text mb="1" h="1.5rem">
+                    {stub.contentType}
+                  </Text>
+                  <Text mb="1" h="1.5rem">
+                    {stub.statusCode}
+                  </Text>
+                  <Text mb="1" h="1.5rem">
+                    {stub.sleep} s
+                  </Text>
+                  <Text mb="1" h="1.5rem">
+                    {stub.ntimesError} times
+                  </Text>
+                  <Text mb="1" h="1.5rem">
+                    {stub.ntimesErrorStatusCode}
+                  </Text>
                   <Box w="100%" p="2" bgColor="#3c3c3c" color="#fff" borderRadius="lg">
                     <pre style={{ whiteSpace: "pre-wrap" }}>
                       {(() => {
