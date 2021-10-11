@@ -20,7 +20,7 @@ CREATE TABLE "new_Stub" (
     "sleep" INTEGER NOT NULL DEFAULT 0,
     "logs" TEXT NOT NULL,
     "ntimesError" INTEGER NOT NULL DEFAULT 0,
-    "ntimesErrorStatusCode" TEXT NOT NULL,
+    "ntimesErrorStatusCode" TEXT NOT NULL DEFAULT "500",
     "ntimesErrorCounter" INTEGER NOT NULL DEFAULT 0,
     "projectId" INTEGER NOT NULL,
     CONSTRAINT "Stub_projectId_fkey" FOREIGN KEY ("projectId") REFERENCES "Project" ("id") ON DELETE CASCADE ON UPDATE CASCADE
