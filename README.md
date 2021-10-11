@@ -41,17 +41,21 @@ blitz prisma studio
 
 Project is the place to manage your stubs.
 
+Let's create the project with ADD button.
+
 <img width="912" alt="スクリーンショット 2021-09-18 0 42 26" src="https://user-images.githubusercontent.com/46414076/133816382-fd6c7ab5-e91b-4378-84e2-f1356314937d.png">
 <img width="912" alt="スクリーンショット 2021-09-18 0 44 26" src="https://user-images.githubusercontent.com/46414076/133816599-a7eb710d-666c-4f58-8392-cb26806dcb51.png">
 
 ### Create Stub
+
+On Project, you could create stubs with ADD button.
 
 <img width="912" alt="スクリーンショット 2021-09-18 0 45 59" src="https://user-images.githubusercontent.com/46414076/133816811-18560c1b-b429-483e-a180-f416c1ad8df6.png">
 <img width="912" alt="スクリーンショット 2021-09-20 15 06 20" src="https://user-images.githubusercontent.com/46414076/133962240-264c2bef-dd40-4a22-a261-8e31936c9bc1.png">
 
 ### Get Stub URL
 
-You get the stub with the copy button.
+You get the stub with the COPY button in Project or Stub.
 
 #### Project
 
