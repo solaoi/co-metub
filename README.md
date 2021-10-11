@@ -51,7 +51,7 @@ Let's create the project with ADD button.
 On Project, you could create stubs with ADD button.
 
 <img width="912" alt="スクリーンショット 2021-09-18 0 45 59" src="https://user-images.githubusercontent.com/46414076/133816811-18560c1b-b429-483e-a180-f416c1ad8df6.png">
-<img width="912" alt="スクリーンショット 2021-09-20 15 06 20" src="https://user-images.githubusercontent.com/46414076/133962240-264c2bef-dd40-4a22-a261-8e31936c9bc1.png">
+<img width="912" alt="スクリーンショット 2021-10-11 22 38 27" src="https://user-images.githubusercontent.com/46414076/136799764-6ed79fc3-34fd-434b-8050-f41cd99e36e4.png">
 
 ### Get Stub URL
 
@@ -63,4 +63,4 @@ You get the stub with the COPY button in Project or Stub.
 
 #### Stub
 
-<img width="912" alt="スクリーンショット 2021-09-20 15 08 30" src="https://user-images.githubusercontent.com/46414076/133962354-80ac9bc8-daea-4e30-982e-39c6d4770d85.png">
+<img width="912" alt="スクリーンショット 2021-10-11 22 42 59" src="https://user-images.githubusercontent.com/46414076/136800374-e49c2b7e-fde8-400d-8acb-1d5713a435e9.png">
