@@ -89,7 +89,7 @@ model Stub {
   sleep                 Int      @default(0)
   logs                  String
   ntimesError           Int      @default(0)
-  ntimesErrorStatusCode String
+  ntimesErrorStatusCode String   @default("500")
   ntimesErrorCounter    Int      @default(0)
   project               Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
   projectId             Int
