@@ -29,13 +29,13 @@
   },
   "dependencies": {
     "@chakra-ui/icons": "1.1.1",
-    "@chakra-ui/react": "1.7.1",
+    "@chakra-ui/react": "1.7.2",
     "@emotion/react": "11.6.0",
     "@emotion/styled": "11.6.0",
     "@prisma/client": "3.5.0",
-    "blitz": "0.42.4",
+    "blitz": "0.43.0",
     "final-form": "4.20.4",
-    "framer-motion": "5.3.0",
+    "framer-motion": "5.3.1",
     "react": "alpha",
     "react-copy-to-clipboard": "5.0.4",
     "react-dom": "alpha",
@@ -46,15 +46,15 @@
   "devDependencies": {
     "@types/preview-email": "2.0.1",
     "@types/react": "17.0.35",
-    "eslint": "8.2.0",
+    "eslint": "8.3.0",
     "husky": "7.0.4",
-    "lint-staged": "12.0.2",
+    "lint-staged": "12.0.3",
     "prettier": "2.4.1",
-    "prettier-plugin-prisma": "3.4.1",
+    "prettier-plugin-prisma": "3.5.0",
     "pretty-quick": "3.1.2",
     "preview-email": "3.0.5",
     "prisma": "3.5.0",
-    "typescript": "~4.4"
+    "typescript": "~4.5"
   },
   "private": true
 }
