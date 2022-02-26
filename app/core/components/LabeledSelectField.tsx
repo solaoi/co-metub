@@ -45,7 +45,7 @@ export const LabeledSelectField = forwardRef<HTMLSelectElement, LabeledSelectFie
         </FormLabel>
         <Select
           {...(input as any)}
-          disabled={submitting}
+          isDisabled={submitting}
           {...extraProps}
           ref={ref as any}
           borderColor={hasError ? "red.500" : "gray.200"}
