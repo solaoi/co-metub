@@ -1,11 +1,11 @@
-FROM mhart/alpine-node:14 as builder
+FROM mhart/alpine-node:16 as builder
 WORKDIR /app
 
 COPY package.json package-lock.json ./
 RUN apk add --no-cache make gcc g++ python3 libtool autoconf automake
 RUN npm ci
 
-FROM mhart/alpine-node:slim-14
+FROM mhart/alpine-node:slim-16
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 
