@@ -29,7 +29,7 @@ export const LabeledTextAreaField = forwardRef<HTMLInputElement, LabeledTextArea
       <FormControl {...outerProps}>
         <FormLabel>
           {label}
-          <Textarea {...input} disabled={submitting} {...props} ref={ref as any} />
+          <Textarea {...input} isDisabled={submitting} {...props} ref={ref as any} />
         </FormLabel>
         {touched && normalizedError && (
           <div role="alert" style={{ color: "red" }}>

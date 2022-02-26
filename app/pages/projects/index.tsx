@@ -148,7 +148,7 @@ export const ProjectsList = () => {
 
         <Flex justify="space-between">
           <Button
-            disabled={page === 0}
+            isDisabled={page === 0}
             onClick={goToPreviousPage}
             colorScheme="teal"
             variant="solid"
@@ -158,7 +158,7 @@ export const ProjectsList = () => {
             Previous
           </Button>
           <Button
-            disabled={!hasMore}
+            isDisabled={!hasMore}
             onClick={goToNextPage}
             colorScheme="teal"
             variant="solid"

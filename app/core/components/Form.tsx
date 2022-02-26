@@ -44,7 +44,7 @@ export function Form<S extends z.ZodType<any, any>>({
             <Flex align="center" justify="center">
               <Button
                 type="submit"
-                disabled={submitting}
+                isDisabled={submitting}
                 colorScheme="blue"
                 variant="solid"
                 _hover={{ bg: "blue.400", borderColor: "blue.400" }}
