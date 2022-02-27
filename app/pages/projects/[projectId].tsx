@@ -77,7 +77,7 @@ const UpdatedInfo = ({ stub, project }) => {
     return (
       <>
         <Text mb="1">{project.updatedBy}</Text>
-        <Text>{project.updatedAt.toLocaleString()}</Text>
+        <Text mb="1">{project.updatedAt.toLocaleString()}</Text>
       </>
     )
   }
@@ -85,14 +85,14 @@ const UpdatedInfo = ({ stub, project }) => {
     return (
       <>
         <Text mb="1">{stub.stubs[0].updatedBy}</Text>
-        <Text>{stub.stubs[0].updatedAt.toLocaleString()}</Text>
+        <Text mb="1">{stub.stubs[0].updatedAt.toLocaleString()}</Text>
       </>
     )
   } else {
     return (
       <>
         <Text mb="1">{project.updatedBy}</Text>
-        <Text>{project.updatedAt.toLocaleString()}</Text>
+        <Text mb="1">{project.updatedAt.toLocaleString()}</Text>
       </>
     )
   }
@@ -181,7 +181,8 @@ export const Project = () => {
                     <Text mb="1">createdBy</Text>
                     <Text mb="1">createdAt</Text>
                     <Text mb="1">updatedBy</Text>
-                    <Text>updatedAt</Text>
+                    <Text mb="1">updatedAt</Text>
+                    <Text>memo</Text>
                   </Flex>
                 </Box>
                 <Box flex="2">
@@ -190,6 +191,15 @@ export const Project = () => {
                     <Text mb="1">{project.createdBy}</Text>
                     <Text mb="1">{project.createdAt.toLocaleString()}</Text>
                     <UpdatedInfo stub={latestStub} project={project} />
+                    <Text
+                      maxH="150"
+                      overflowY="auto"
+                      style={{ whiteSpace: "pre-wrap", wordWrap: "break-word" }}
+                      borderRadius="lg"
+                      borderWidth="1px"
+                    >
+                      {project.memo}
+                    </Text>
                   </Flex>
                 </Box>
               </Flex>

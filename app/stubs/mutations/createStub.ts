@@ -32,6 +32,7 @@ const CreateStub = z.object({
   ntimesErrorCounter: z.number().min(0).default(0),
   logs: z.string().default(""),
   projectId: z.number(),
+  memo: z.string().default(""),
 })
 
 export default resolver.pipe(resolver.zod(CreateStub), resolver.authorize(), async (input) => {

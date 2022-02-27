@@ -1,5 +1,6 @@
 import { Form, FormProps } from "app/core/components/Form"
 import { LabeledTextField } from "app/core/components/LabeledTextField"
+import { LabeledTextAreaField } from "app/core/components/LabeledTextAreaField"
 import { z } from "zod"
 export { FORM_ERROR } from "app/core/components/Form"
 
@@ -8,6 +9,7 @@ export function ProjectForm<S extends z.ZodType<any, any>>(props: FormProps<S>) 
     <Form<S> {...props}>
       <LabeledTextField name="name" label="Name" placeholder="Name" />
       <LabeledTextField name="basePath" label="BasePath" placeholder="/foo" />
+      <LabeledTextAreaField name="memo" label="Memo" placeholder="Any additional comments" />
     </Form>
   )
 }

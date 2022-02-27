@@ -135,15 +135,28 @@ export const Stub = () => {
                   <Text mb="1" h="1.5rem">
                     statusCode
                   </Text>
-                  <Text mb="1" h="1.5rem">
-                    sleep
-                  </Text>
-                  <Text mb="1" h="1.5rem">
-                    ntimesError
-                  </Text>
-                  <Text mb="1" h="1.5rem">
-                    ntimesErrorStatusCode
-                  </Text>
+                  {stub.sleep !== 0 && (
+                    <>
+                      <Text mb="1" h="1.5rem">
+                        sleep
+                      </Text>
+                    </>
+                  )}
+                  {stub.ntimesError !== 0 && (
+                    <>
+                      <Text mb="1" h="1.5rem">
+                        ntimesError
+                      </Text>
+                      <Text mb="1" h="1.5rem">
+                        ntimesErrorStatusCode
+                      </Text>
+                    </>
+                  )}
+                  {stub.memo !== "" && (
+                    <Text mb="1" h="100">
+                      memo
+                    </Text>
+                  )}
                   <Text>response</Text>
                 </Flex>
               </Box>
@@ -173,16 +186,44 @@ export const Stub = () => {
                   <Text mb="1" h="1.5rem">
                     {stub.statusCode}
                   </Text>
-                  <Text mb="1" h="1.5rem">
-                    {stub.sleep} s
-                  </Text>
-                  <Text mb="1" h="1.5rem">
-                    {stub.ntimesError} times
-                  </Text>
-                  <Text mb="1" h="1.5rem">
-                    {stub.ntimesErrorStatusCode}
-                  </Text>
-                  <Box w="100%" p="2" bgColor="#3c3c3c" color="#fff" borderRadius="lg">
+                  {stub.sleep !== 0 && (
+                    <>
+                      <Text mb="1" h="1.5rem">
+                        {stub.sleep} s
+                      </Text>
+                    </>
+                  )}
+                  {stub.ntimesError !== 0 && (
+                    <>
+                      <Text mb="1" h="1.5rem">
+                        {stub.ntimesError} times
+                      </Text>
+                      <Text mb="1" h="1.5rem">
+                        {stub.ntimesErrorStatusCode}
+                      </Text>
+                    </>
+                  )}
+                  {stub.memo !== "" && (
+                    <Text
+                      h="100"
+                      overflowY="auto"
+                      mb="1"
+                      style={{ whiteSpace: "pre-wrap", wordWrap: "break-word" }}
+                      borderRadius="lg"
+                      borderWidth="1px"
+                    >
+                      {stub.memo}
+                    </Text>
+                  )}
+                  <Box
+                    w="100%"
+                    p="2"
+                    bgColor="#3c3c3c"
+                    color="#fff"
+                    borderRadius="lg"
+                    maxH="300"
+                    overflowY="auto"
+                  >
                     <pre style={{ whiteSpace: "pre-wrap" }}>
                       {(() => {
                         try {
