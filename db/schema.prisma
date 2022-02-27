@@ -72,6 +72,7 @@ model Project {
   basePath  String   @unique
   createdBy String
   updatedBy String
+  memo      String   @default("")
   Stub      Stub[]
 }
 
@@ -91,6 +92,7 @@ model Stub {
   ntimesError           Int      @default(0)
   ntimesErrorStatusCode String   @default("500")
   ntimesErrorCounter    Int      @default(0)
+  memo                  String   @default("")
   project               Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
   projectId             Int
 }
