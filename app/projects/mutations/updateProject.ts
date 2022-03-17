@@ -9,7 +9,7 @@ const UpdateProject = z.object({
   basePath: z
     .string()
     .regex(/^\/[^\/]+$/, { message: "The only slash allowed is at the beginning of a basePath" }),
-  memo: z.string(),
+  memo: z.string().default(""),
 })
 
 export default resolver.pipe(
