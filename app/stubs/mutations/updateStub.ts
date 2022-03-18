@@ -29,7 +29,7 @@ const UpdateStub = z.object({
   ntimesErrorStatusCode: z
     .string()
     .regex(/^\d{3}$/, { message: "The ntimes error status code must be a three-digit number." }),
-  memo: z.string(),
+  memo: z.string().default(""),
 })
 
 export default resolver.pipe(

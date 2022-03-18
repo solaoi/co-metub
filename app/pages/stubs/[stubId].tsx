@@ -18,6 +18,7 @@ import getProject from "app/projects/queries/getProject"
 import { DeleteIcon, EditIcon } from "@chakra-ui/icons"
 import { HiOutlineClipboardCopy } from "react-icons/hi"
 import { CopyToClipboard } from "react-copy-to-clipboard"
+import formatXml from "xml-formatter"
 
 const BreadCrumb = ({ stub }) => {
   const [project] = useQuery(getProject, { id: stub.projectId })
@@ -107,137 +108,144 @@ export const Stub = () => {
               DELETE
             </Button>
           </Flex>
-          <Box fontSize="md" mr="1" ml="1" mt="1" mb="5" p="1" borderWidth="1px" borderRadius="lg">
-            <Flex justify="space-between">
-              <Box flex="1">
-                <Flex direction="column" fontWeight="bold" color="#666">
-                  <Text mb="1" h="1.5rem">
-                    path
-                  </Text>
-                  <Text mb="1" h="1.5rem">
-                    createdBy
-                  </Text>
-                  <Text mb="1" h="1.5rem">
-                    createdAt
-                  </Text>
-                  <Text mb="1" h="1.5rem">
-                    updatedBy
-                  </Text>
-                  <Text mb="1" h="1.5rem">
-                    updatedAt
-                  </Text>
-                  <Text mb="1" h="1.5rem">
-                    method
-                  </Text>
-                  <Text mb="1" h="1.5rem">
-                    contentType
-                  </Text>
-                  <Text mb="1" h="1.5rem">
-                    statusCode
-                  </Text>
-                  {stub.sleep !== 0 && (
-                    <>
-                      <Text mb="1" h="1.5rem">
-                        sleep
-                      </Text>
-                    </>
-                  )}
-                  {stub.ntimesError !== 0 && (
-                    <>
-                      <Text mb="1" h="1.5rem">
-                        ntimesError
-                      </Text>
-                      <Text mb="1" h="1.5rem">
-                        ntimesErrorStatusCode
-                      </Text>
-                    </>
-                  )}
-                  {stub.memo !== "" && (
-                    <Text mb="1" h="100">
-                      memo
+          <Flex fontSize="md" mr="1" ml="1" mt="1" mb="5" p="1" borderWidth="1px" borderRadius="lg">
+            <Box w="33%">
+              <Flex direction="column" fontWeight="bold" color="#666">
+                <Text mb="1" h="1.5rem">
+                  path
+                </Text>
+                <Text mb="1" h="1.5rem">
+                  createdBy
+                </Text>
+                <Text mb="1" h="1.5rem">
+                  createdAt
+                </Text>
+                <Text mb="1" h="1.5rem">
+                  updatedBy
+                </Text>
+                <Text mb="1" h="1.5rem">
+                  updatedAt
+                </Text>
+                <Text mb="1" h="1.5rem">
+                  method
+                </Text>
+                <Text mb="1" h="1.5rem">
+                  contentType
+                </Text>
+                <Text mb="1" h="1.5rem">
+                  statusCode
+                </Text>
+                {stub.sleep !== 0 && (
+                  <>
+                    <Text mb="1" h="1.5rem">
+                      sleep
                     </Text>
-                  )}
-                  <Text>response</Text>
-                </Flex>
-              </Box>
-              <Box flex="2">
-                <Flex direction="column">
-                  <Text mb="1" h="1.5rem">
-                    {stub.path}
-                  </Text>
-                  <Text mb="1" h="1.5rem">
-                    {stub.createdBy}
-                  </Text>
-                  <Text mb="1" h="1.5rem">
-                    {stub.createdAt.toLocaleString()}
-                  </Text>
-                  <Text mb="1" h="1.5rem">
-                    {stub.updatedBy}
-                  </Text>
-                  <Text mb="1" h="1.5rem">
-                    {stub.updatedAt.toLocaleString()}
-                  </Text>
-                  <Text mb="1" h="1.5rem">
-                    {stub.method}
-                  </Text>
-                  <Text mb="1" h="1.5rem">
-                    {stub.contentType}
-                  </Text>
-                  <Text mb="1" h="1.5rem">
-                    {stub.statusCode}
-                  </Text>
-                  {stub.sleep !== 0 && (
-                    <>
-                      <Text mb="1" h="1.5rem">
-                        {stub.sleep} s
-                      </Text>
-                    </>
-                  )}
-                  {stub.ntimesError !== 0 && (
-                    <>
-                      <Text mb="1" h="1.5rem">
-                        {stub.ntimesError} times
-                      </Text>
-                      <Text mb="1" h="1.5rem">
-                        {stub.ntimesErrorStatusCode}
-                      </Text>
-                    </>
-                  )}
-                  {stub.memo !== "" && (
-                    <Text
-                      h="100"
-                      overflowY="auto"
-                      mb="1"
-                      style={{ whiteSpace: "pre-wrap", wordWrap: "break-word" }}
-                      borderRadius="lg"
-                      borderWidth="1px"
-                    >
-                      {stub.memo}
+                  </>
+                )}
+                {stub.ntimesError !== 0 && (
+                  <>
+                    <Text mb="1" h="1.5rem">
+                      ntimesError
                     </Text>
-                  )}
-                  <Box
-                    w="100%"
-                    p="2"
-                    bgColor="#3c3c3c"
-                    color="#fff"
-                    borderRadius="lg"
-                    maxH="300"
+                    <Text mb="1" h="1.5rem">
+                      ntimesErrorStatusCode
+                    </Text>
+                  </>
+                )}
+                {stub.memo !== "" && (
+                  <Text mb="1" h="100">
+                    memo
+                  </Text>
+                )}
+                <Text>response</Text>
+              </Flex>
+            </Box>
+            <Box w="66%">
+              <Flex direction="column">
+                <Text mb="1" h="1.5rem">
+                  {stub.path}
+                </Text>
+                <Text mb="1" h="1.5rem">
+                  {stub.createdBy}
+                </Text>
+                <Text mb="1" h="1.5rem">
+                  {stub.createdAt.toLocaleString()}
+                </Text>
+                <Text mb="1" h="1.5rem">
+                  {stub.updatedBy}
+                </Text>
+                <Text mb="1" h="1.5rem">
+                  {stub.updatedAt.toLocaleString()}
+                </Text>
+                <Text mb="1" h="1.5rem">
+                  {stub.method}
+                </Text>
+                <Text mb="1" h="1.5rem">
+                  {stub.contentType}
+                </Text>
+                <Text mb="1" h="1.5rem">
+                  {stub.statusCode}
+                </Text>
+                {stub.sleep !== 0 && (
+                  <>
+                    <Text mb="1" h="1.5rem">
+                      {stub.sleep} s
+                    </Text>
+                  </>
+                )}
+                {stub.ntimesError !== 0 && (
+                  <>
+                    <Text mb="1" h="1.5rem">
+                      {stub.ntimesError} times
+                    </Text>
+                    <Text mb="1" h="1.5rem">
+                      {stub.ntimesErrorStatusCode}
+                    </Text>
+                  </>
+                )}
+                {stub.memo !== "" && (
+                  <Text
+                    h="100"
                     overflowY="auto"
+                    mb="1"
+                    style={{ whiteSpace: "pre-wrap", wordWrap: "break-word" }}
+                    borderRadius="lg"
+                    borderWidth="1px"
                   >
-                    <pre style={{ whiteSpace: "pre-wrap" }}>
-                      {(() => {
-                        try {
+                    {stub.memo}
+                  </Text>
+                )}
+                <Box
+                  w="100%"
+                  p="2"
+                  bgColor="#3c3c3c"
+                  color="#fff"
+                  borderRadius="lg"
+                  maxH="300"
+                  overflowY="auto"
+                >
+                  <pre style={{ whiteSpace: "pre-wrap" }}>
+                    {(() => {
+                      try {
+                        if (
+                          stub.contentType === "application/json" ||
+                          stub.contentType === "text/json"
+                        ) {
                           return JSON.stringify(JSON.parse(stub.response), null, 2)
-                        } catch {
+                        } else if (stub.contentType === "application/xml") {
+                          return formatXml(stub.response, { lineSeparator: "\n" })
+                        } else {
                           return stub.response
                         }
-                      })()}
-                    </pre>
-                  </Box>
-                </Flex>
-              </Box>
-            </Flex>
-          </Box>
+                      } catch {
+                        return stub.response
+                      }
+                    })()}
+                  </pre>
+                </Box>
+              </Flex>
+            </Box>
+          </Flex>
           <Heading size="md" as="h3" mb="1">
             Recent Requests
           </Heading>
@@ -255,9 +263,12 @@ export const Stub = () => {
                   .split("\t")
                   .filter((s) => s !== "")
                   .map((l, i) => (
-                    <pre style={{ whiteSpace: "pre-wrap" }} key={"log_" + i}>
-                      {i !== 0 ? `\n${l}` : l}
-                    </pre>
+                    <>
+                      <pre style={{ whiteSpace: "pre-wrap" }} key={"log_" + i}>
+                        {i !== 0 ? `\n${l}` : l}
+                      </pre>
+                      <hr />
+                    </>
                   ))
               : "Never been requested..."}
           </Box>
