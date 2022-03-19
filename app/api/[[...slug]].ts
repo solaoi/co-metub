@@ -20,11 +20,13 @@ const Handler: BlitzApiHandler = async (req: BlitzApiRequest, res: BlitzApiRespo
     method,
   } = req
   if (!Array.isArray(slug)) {
-    return res.status(404).end()
+    res.status(404).end()
+    return
   }
   const obj = await dynamicHandler(method, slug)
   if (!obj) {
-    return res.status(404).end()
+    res.status(404).end()
+    return
   }
   const {
     id,
@@ -87,9 +89,10 @@ const Handler: BlitzApiHandler = async (req: BlitzApiRequest, res: BlitzApiRespo
   ])
 
   if (inNtimesErrorTerm) {
-    return res.status(Number(ntimesErrorStatusCode)).end()
+    res.status(Number(ntimesErrorStatusCode)).end()
+    return
   }
-  return res.status(Number(statusCode)).setHeader("Content-Type", contentType).end(response)
+  res.status(Number(statusCode)).setHeader("Content-Type", contentType).end(response)
 }
 
 export default Handler
