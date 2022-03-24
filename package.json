@@ -58,6 +58,7 @@
   },
   "overrides": {
     "blitz": {
+      "minimist": "1.2.6",
       "checkpoint-client": {
         "node-fetch": "2.6.7"
       }
