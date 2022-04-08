@@ -4,7 +4,7 @@
   "license": "MIT",
   "engines": {
     "node": "16",
-    "npm": "8"
+    "npm": ">=8.3"
   },
   "scripts": {
     "dev": "blitz dev",
@@ -12,8 +12,6 @@
     "start": "blitz start",
     "studio": "blitz prisma studio",
     "lint": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
-    "test": "jest",
-    "test:watch": "jest --watch",
     "prepare": "husky install"
   },
   "prisma": {
@@ -30,30 +28,30 @@
   },
   "dependencies": {
     "@chakra-ui/icons": "1.1.7",
-    "@chakra-ui/react": "1.8.6",
-    "@emotion/react": "11.8.2",
+    "@chakra-ui/react": "1.8.8",
+    "@emotion/react": "11.9.0",
     "@emotion/styled": "11.8.1",
-    "@prisma/client": "3.11.0",
+    "@prisma/client": "3.12.0",
     "blitz": "0.45.3",
     "final-form": "4.20.6",
-    "framer-motion": "6.2.8",
-    "react": "18.0.0-beta-149b420f6-20211119",
+    "framer-motion": "6.2.9",
+    "react": "18.0.0",
     "react-copy-to-clipboard": "5.0.4",
-    "react-dom": "18.0.0-alpha-5ca4b0433-20211020",
-    "react-final-form": "6.5.8",
+    "react-dom": "18.0.0",
+    "react-final-form": "6.5.9",
     "react-icons": "4.3.1",
     "xml-formatter": "2.6.1",
-    "zod": "3.14.2"
+    "zod": "3.14.4"
   },
   "devDependencies": {
-    "@types/react": "17.0.40",
-    "eslint": "8.11.0",
+    "@types/react": "18.0.0",
+    "eslint": "8.12.0",
     "husky": "7.0.4",
     "lint-staged": "12.3.7",
-    "prettier": "2.6.0",
-    "prettier-plugin-prisma": "3.11.0",
+    "prettier": "2.6.2",
+    "prettier-plugin-prisma": "3.12.0",
     "pretty-quick": "3.1.3",
-    "prisma": "3.11.0",
+    "prisma": "3.12.0",
     "typescript": "~4.5"
   },
   "overrides": {
