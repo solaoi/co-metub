@@ -17,10 +17,9 @@ jobs:
       - name: Update dependencies
         id: vars
         run: |
-          npm install -g npm
-          npm install -g npm-check-updates
+          npm i -g npm-check-updates
           ncu -u
-          npm install
+          npm i && npm update
           npm run build
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
