@@ -18,7 +18,7 @@ jobs:
         id: vars
         run: |
           npm i -g npm-check-updates
-          ncu -u
+          ncu -u -x @types/react
           npm i && npm update
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
