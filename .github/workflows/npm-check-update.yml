@@ -20,6 +20,7 @@ jobs:
           npm i -g npm-check-updates
           ncu -u -x @types/react
           npm i && npm update
+          npm run build
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
