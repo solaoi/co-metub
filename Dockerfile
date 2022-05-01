@@ -1,8 +1,7 @@
 FROM node:18.0.0-alpine as builder
 WORKDIR /app
 
-COPY package.json package-lock.json ./
-RUN apk add --no-cache make gcc g++ python3 libtool autoconf automake
+COPY package.json package-lock.json .npmrc ./
 # overrides field on package.json is not allowd npm ci command...
 RUN npm i && npm update
 
