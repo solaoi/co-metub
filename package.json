@@ -27,11 +27,11 @@
     ]
   },
   "dependencies": {
-    "@chakra-ui/icons": "1.1.7",
-    "@chakra-ui/react": "1.8.8",
+    "@chakra-ui/icons": "2.0.0",
+    "@chakra-ui/react": "2.0.2",
     "@emotion/react": "11.9.0",
     "@emotion/styled": "11.8.1",
-    "@prisma/client": "3.13.0",
+    "@prisma/client": "3.14.0",
     "blitz": "0.45.4",
     "final-form": "4.20.7",
     "framer-motion": "6.3.3",
@@ -41,17 +41,17 @@
     "react-final-form": "6.5.9",
     "react-icons": "4.3.1",
     "xml-formatter": "2.6.1",
-    "zod": "3.14.4"
+    "zod": "3.16.0"
   },
   "devDependencies": {
     "@types/react": "18.0.1",
-    "eslint": "8.14.0",
-    "husky": "7.0.4",
+    "eslint": "8.15.0",
+    "husky": "8.0.1",
     "lint-staged": "12.4.1",
     "prettier": "2.6.2",
-    "prettier-plugin-prisma": "3.13.0",
+    "prettier-plugin-prisma": "3.14.0",
     "pretty-quick": "3.1.3",
-    "prisma": "3.13.0",
+    "prisma": "3.14.0",
     "typescript": "~4.6"
   },
   "overrides": {
