@@ -1,16 +1,15 @@
 import { BlitzApiRequest, BlitzApiResponse, BlitzApiHandler } from "blitz"
-import db, { prisma } from "db"
+import { getProjectIdBy, getStubsBy, updateStubBy } from "../lib/sqlite3Client"
 
 const snooze = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
-const dynamicHandler = async (method, slug) => {
-  const project = await db.project.findFirst({ where: { basePath: `/${slug[0]}` } })
-  if (!project) {
+const dynamicHandler = (method, slug) => {
+  const projectId = getProjectIdBy(`/${slug[0]}`)
+  if (projectId === null) {
     return null
   }
   const path = slug.filter((_, i) => i !== 0).join("/")
-  const stubs = await db.stub.findMany({ where: { projectId: project.id, path: `/${path}` } })
-
+  const stubs = getStubsBy(projectId, `/${path}`)
   return stubs.filter((stub) => stub.method === method)[0]
 }
 
@@ -23,7 +22,7 @@ const Handler: BlitzApiHandler = async (req: BlitzApiRequest, res: BlitzApiRespo
     res.status(404).end()
     return
   }
-  const obj = await dynamicHandler(method, slug)
+  const obj = dynamicHandler(method, slug)
   if (!obj) {
     res.status(404).end()
     return
@@ -79,14 +78,8 @@ const Handler: BlitzApiHandler = async (req: BlitzApiRequest, res: BlitzApiRespo
       return snooze(sleep * 1000)
     }
   }
-
-  await Promise.all([
-    sleepFunc(),
-    db.stub.update({
-      where: { id },
-      data: { logs: updatedLogs, ntimesErrorCounter: ntimesErrorCount },
-    }),
-  ])
+  const { updateStubWith } = updateStubBy(id)
+  await Promise.all([sleepFunc(), updateStubWith(updatedLogs, ntimesErrorCount)])
 
   if (inNtimesErrorTerm) {
     res.status(Number(ntimesErrorStatusCode)).end()

@@ -32,6 +32,7 @@
     "@emotion/react": "11.9.0",
     "@emotion/styled": "11.8.1",
     "@prisma/client": "3.13.0",
+    "better-sqlite3": "7.5.3",
     "blitz": "0.45.4",
     "final-form": "4.20.7",
     "framer-motion": "6.3.3",
