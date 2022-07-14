@@ -263,12 +263,10 @@ export const Stub = () => {
                   .split("\t")
                   .filter((s) => s !== "")
                   .map((l, i) => (
-                    <>
-                      <pre style={{ whiteSpace: "pre-wrap" }} key={"log_" + i}>
-                        {i !== 0 ? `\n${l}` : l}
-                      </pre>
+                    <div key={"log_" + i}>
+                      <pre style={{ whiteSpace: "pre-wrap" }}>{i !== 0 ? `\n${l}` : l}</pre>
                       <hr />
-                    </>
+                    </div>
                   ))
               : "Never been requested..."}
           </Box>
