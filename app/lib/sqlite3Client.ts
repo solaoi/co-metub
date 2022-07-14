@@ -8,7 +8,10 @@ const databasePath =
     ? join(process.cwd(), "db", database.replace("file:", ""))
     : database.replace("file:", "")
 
-const db = new Database(databasePath, { fileMustExist: true })
+const db = new Database(databasePath, {
+  fileMustExist: true,
+  verbose: (o) => console.log("\u001b[32mbetter-sqlite3:query\x1b[39m " + o),
+})
 
 const getProjectIdByPreparedStatement = db.prepare("SELECT id FROM Project WHERE basePath = ?")
 const getProjectIdBy = (basePath: string): number | null => {

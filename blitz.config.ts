@@ -1,6 +1,9 @@
 import { BlitzConfig, sessionMiddleware, simpleRolesIsAuthorized } from "blitz"
 
 const config: BlitzConfig = {
+  log: {
+    level: "warn",
+  },
   middleware: [
     sessionMiddleware({
       cookiePrefix: "co-metub",
