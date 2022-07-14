@@ -1,19 +1,19 @@
-FROM node:18.0.0-alpine as builder
+FROM node:18-alpine as builder
 WORKDIR /app
 
 COPY package.json package-lock.json .npmrc ./
 # overrides field on package.json is not allowd npm ci command...
 RUN npm i && npm update
 
-FROM node:18.0.0-alpine
+FROM node:18-alpine
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 
 COPY . .
 COPY --from=builder /app/node_modules ./node_modules
 
-ENV NEXT_TELEMETRY_DISABLED 1
-ENV NODE_ENV production
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV NODE_ENV=production
 
 RUN npm run build
 
