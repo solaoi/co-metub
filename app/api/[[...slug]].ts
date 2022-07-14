@@ -14,6 +14,7 @@ const dynamicHandler = (method, slug) => {
 }
 
 const Handler: BlitzApiHandler = async (req: BlitzApiRequest, res: BlitzApiResponse) => {
+  res.shouldKeepAlive = false
   const {
     query: { slug },
     method,
