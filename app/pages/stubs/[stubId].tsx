@@ -15,10 +15,11 @@ import {
   Text,
 } from "@chakra-ui/react"
 import getProject from "app/projects/queries/getProject"
-import { DeleteIcon, EditIcon } from "@chakra-ui/icons"
+import { DeleteIcon, EditIcon, DownloadIcon } from "@chakra-ui/icons"
 import { HiOutlineClipboardCopy } from "react-icons/hi"
 import { CopyToClipboard } from "react-copy-to-clipboard"
 import formatXml from "xml-formatter"
+import { saveAs } from "file-saver"
 
 const BreadCrumb = ({ stub }) => {
   const [project] = useQuery(getProject, { id: stub.projectId })
@@ -93,6 +94,25 @@ export const Stub = () => {
                 <a>EDIT</a>
               </Button>
             </Link>
+            <Button
+              mr="2"
+              colorScheme="teal"
+              variant="solid"
+              _hover={{ bg: "teal.400", borderColor: "teal.400" }}
+              leftIcon={<DownloadIcon />}
+              onClick={async () => {
+                const { path, method, contentType, statusCode, response, sleep } = stub
+                const blob = new Blob(
+                  [JSON.stringify({ path, method, contentType, statusCode, response, sleep })],
+                  {
+                    type: "application/json; charset=utf-8",
+                  }
+                )
+                saveAs(blob, `co-metub_s${stub.id}.json`)
+              }}
+            >
+              EXPORT
+            </Button>
             <Button
               colorScheme="red"
               variant="solid"

@@ -34,6 +34,7 @@
     "@prisma/client": "4.0.0",
     "better-sqlite3": "7.6.2",
     "blitz": "0.45.5",
+    "file-saver": "2.0.5",
     "final-form": "4.20.7",
     "framer-motion": "6.5.1",
     "react": "18.2.0",
@@ -46,6 +47,7 @@
   },
   "devDependencies": {
     "@types/react": "18.0.1",
+    "@types/file-saver": "2.0.5",
     "eslint": "8.20.0",
     "husky": "8.0.1",
     "lint-staged": "13.0.3",
