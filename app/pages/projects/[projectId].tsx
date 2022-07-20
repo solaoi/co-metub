@@ -9,6 +9,7 @@ import {
   useMutation,
   Routes,
   usePaginatedQuery,
+  invoke,
 } from "blitz"
 import Layout from "app/core/layouts/Layout"
 import getProject from "app/projects/queries/getProject"
@@ -32,8 +33,15 @@ import {
   Text,
 } from "@chakra-ui/react"
 import { HiViewGridAdd, HiOutlineClipboardCopy } from "react-icons/hi"
-import { ChevronLeftIcon, ChevronRightIcon, DeleteIcon, EditIcon } from "@chakra-ui/icons"
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  DeleteIcon,
+  EditIcon,
+  DownloadIcon,
+} from "@chakra-ui/icons"
 import { CopyToClipboard } from "react-copy-to-clipboard"
+import { saveAs } from "file-saver"
 
 const BreadCrumb = ({ project }) => {
   return (
@@ -148,6 +156,27 @@ export const Project = () => {
                   <a>EDIT</a>
                 </Button>
               </Link>
+              <Button
+                mr="2"
+                colorScheme="teal"
+                variant="solid"
+                _hover={{ bg: "teal.400", borderColor: "teal.400" }}
+                leftIcon={<DownloadIcon />}
+                onClick={async () => {
+                  const { stubs } = await invoke(getStubs, { where: { projectId: projectId } })
+                  const stubsForExport = stubs.map(
+                    ({ path, method, contentType, statusCode, response, sleep }) => {
+                      return { path, method, contentType, statusCode, response, sleep }
+                    }
+                  )
+                  const blob = new Blob([JSON.stringify(stubsForExport)], {
+                    type: "application/json; charset=utf-8",
+                  })
+                  saveAs(blob, `co-metub_p${project.id}.json`)
+                }}
+              >
+                EXPORT
+              </Button>
               <Button
                 colorScheme="red"
                 variant="solid"
