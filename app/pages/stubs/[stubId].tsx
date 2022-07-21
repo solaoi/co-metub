@@ -21,9 +21,7 @@ import { CopyToClipboard } from "react-copy-to-clipboard"
 import formatXml from "xml-formatter"
 import { saveAs } from "file-saver"
 
-const BreadCrumb = ({ stub }) => {
-  const [project] = useQuery(getProject, { id: stub.projectId })
-
+const BreadCrumb = ({ stub, project }) => {
   return (
     <Suspense fallback={<></>}>
       <Breadcrumb m="2" color="#666">
@@ -46,8 +44,7 @@ const BreadCrumb = ({ stub }) => {
     </Suspense>
   )
 }
-const CopyUrlButton = ({ stub }) => {
-  const [project] = useQuery(getProject, { id: stub.projectId })
+const CopyUrlButton = ({ stub, project }) => {
   return (
     <Suspense fallback={<></>}>
       <CopyToClipboard
@@ -72,17 +69,18 @@ export const Stub = () => {
   const stubId = useParam("stubId", "number")
   const [deleteStubMutation] = useMutation(deleteStub)
   const [stub] = useQuery(getStub, { id: stubId })
+  const [project] = useQuery(getProject, { id: stub.projectId })
 
   return (
     <Box>
-      <BreadCrumb stub={stub} />
+      <BreadCrumb stub={stub} project={project} />
       <Flex align="center" justify="center" m={5}>
         <Box w="80%">
           <Heading size="lg" as="h1">
             Stub
           </Heading>
           <Flex justify="flex-end">
-            <CopyUrlButton stub={stub} />
+            <CopyUrlButton stub={stub} project={project} />
             <Link href={Routes.EditStubPage({ stubId: stub.id })}>
               <Button
                 mr="2"
@@ -103,7 +101,20 @@ export const Stub = () => {
               onClick={async () => {
                 const { path, method, contentType, statusCode, response, sleep } = stub
                 const blob = new Blob(
-                  [JSON.stringify({ path, method, contentType, statusCode, response, sleep })],
+                  [
+                    JSON.stringify(
+                      {
+                        path: `/api${project.basePath}${path}`,
+                        method,
+                        contentType,
+                        statusCode,
+                        response,
+                        sleep: sleep * 1000,
+                      },
+                      null,
+                      2
+                    ),
+                  ],
                   {
                     type: "application/json; charset=utf-8",
                   }

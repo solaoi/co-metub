@@ -166,10 +166,17 @@ export const Project = () => {
                   const { stubs } = await invoke(getStubs, { where: { projectId: projectId } })
                   const stubsForExport = stubs.map(
                     ({ path, method, contentType, statusCode, response, sleep }) => {
-                      return { path, method, contentType, statusCode, response, sleep }
+                      return {
+                        path: `/api${project.basePath}${path}`,
+                        method,
+                        contentType,
+                        statusCode,
+                        response,
+                        sleep: sleep * 1000,
+                      }
                     }
                   )
-                  const blob = new Blob([JSON.stringify(stubsForExport)], {
+                  const blob = new Blob([JSON.stringify(stubsForExport, null, 2)], {
                     type: "application/json; charset=utf-8",
                   })
                   saveAs(blob, `co-metub_p${project.id}.json`)
