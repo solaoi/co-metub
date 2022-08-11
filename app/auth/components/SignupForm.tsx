@@ -3,7 +3,7 @@ import { LabeledTextField } from "app/core/components/LabeledTextField"
 import { Form, FORM_ERROR } from "app/core/components/Form"
 import signup from "app/auth/mutations/signup"
 import { Signup } from "app/auth/validations"
-import Card from "../../core/layouts/Card"
+import Card from "app/core/layouts/Card"
 import { Flex } from "@chakra-ui/react"
 
 type SignupFormProps = {

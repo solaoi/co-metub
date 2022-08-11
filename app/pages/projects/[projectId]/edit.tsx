@@ -5,7 +5,7 @@ import getProject from "app/projects/queries/getProject"
 import updateProject from "app/projects/mutations/updateProject"
 import { ProjectForm, FORM_ERROR } from "app/projects/components/ProjectForm"
 import { Spinner, Flex, Breadcrumb, BreadcrumbItem, BreadcrumbLink } from "@chakra-ui/react"
-import Card from "../../../core/layouts/Card"
+import Card from "app/core/layouts/Card"
 import { useCurrentUser } from "app/core/hooks/useCurrentUser"
 
 const BreadCrumb = ({ project }) => {

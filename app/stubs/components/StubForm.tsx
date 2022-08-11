@@ -5,8 +5,7 @@ import { LabeledSelectField } from "app/core/components/LabeledSelectField"
 import { useRouterQuery } from "blitz"
 import { z } from "zod"
 export { FORM_ERROR } from "app/core/components/Form"
-import Card from "../../core/layouts/Card"
-import { border } from "@chakra-ui/styled-system"
+import Card from "app/core/layouts/Card"
 
 export function StubForm<S extends z.ZodType<any, any>>(props: FormProps<S>) {
   const query = useRouterQuery()
