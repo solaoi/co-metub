@@ -1,6 +1,9 @@
 FROM node:18-alpine as builder
 WORKDIR /app
 
+# for M1 Mac
+RUN apk update && apk add python make gcc g++
+
 COPY package.json package-lock.json .npmrc ./
 # overrides field on package.json is not allowd npm ci command...
 RUN npm i && npm update
