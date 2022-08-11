@@ -1,18 +1,13 @@
-FROM node:18-alpine as builder
+FROM node:18-slim as builder
 WORKDIR /app
 
-# Install Python/pip and dependencies for M1 Mac
-ENV PYTHONUNBUFFERED=1
-RUN apk add g++ make
-RUN apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python
-RUN python3 -m ensurepip
-RUN pip3 install --no-cache --upgrade pip setuptools
+RUN apt-get update && apt-get install -y openssl
 
 COPY package.json package-lock.json .npmrc ./
 # overrides field on package.json is not allowd npm ci command...
 RUN npm i && npm update
 
-FROM node:18-alpine
+FROM node:18-slim
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 
@@ -22,7 +17,7 @@ COPY --from=builder /app/node_modules ./node_modules
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_ENV=production
 
-RUN npm run build
+RUN apt-get update && apt-get install -y openssl && npm run build
 
 EXPOSE 3000
 #
