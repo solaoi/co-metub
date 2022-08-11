@@ -5,7 +5,7 @@ import { StubForm, FORM_ERROR } from "app/stubs/components/StubForm"
 import { Spinner, Flex, Breadcrumb, BreadcrumbItem, BreadcrumbLink } from "@chakra-ui/react"
 import getProject from "app/projects/queries/getProject"
 import { Suspense } from "react"
-import Card from "../../core/layouts/Card"
+import Card from "app/core/layouts/Card"
 import { useCurrentUser } from "app/core/hooks/useCurrentUser"
 
 const BreadCrumb = ({ projectId }) => {
