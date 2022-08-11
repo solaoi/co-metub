@@ -255,7 +255,7 @@ export const Stub = () => {
                   maxH="300"
                   overflowY="auto"
                 >
-                  <pre style={{ whiteSpace: "pre-wrap" }}>
+                  <pre style={{ whiteSpace: "pre-wrap", userSelect: "none" }}>
                     {(() => {
                       try {
                         if (
@@ -273,6 +273,24 @@ export const Stub = () => {
                       }
                     })()}
                   </pre>
+                  <Flex justifyContent="flex-end" marginTop="-1.5rem">
+                    <CopyToClipboard text={stub.response}>
+                      <Box
+                        borderRadius="5px"
+                        borderWidth="1px"
+                        borderStyle="solid"
+                        padding="5px"
+                        _hover={{
+                          color: "#3c3c3c",
+                          backgroundColor: "white",
+                          opacity: "80%",
+                          cursor: "pointer",
+                        }}
+                      >
+                        <HiOutlineClipboardCopy />
+                      </Box>
+                    </CopyToClipboard>
+                  </Flex>
                 </Box>
               </Flex>
             </Box>
