@@ -2,6 +2,8 @@
 
 ![license](https://img.shields.io/github/license/solaoi/co-metub)
 [![CodeQL](https://github.com/solaoi/co-metub/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/solaoi/co-metub/actions/workflows/codeql-analysis.yml)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/solaoi/co-metub)](https://github.com/solaoi/co-metub/releases)
+[![GitHub Sponsors](https://img.shields.io/github/sponsors/solaoi?color=db61a2)](https://github.com/sponsors/solaoi)
 
 This is an application for multiple people to manage the stub APIs.
 
