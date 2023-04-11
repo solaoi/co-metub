@@ -177,6 +177,7 @@ export const Stub = () => {
                   stub.cookies
                     .replaceAll("\r", "")
                     .split("\n")
+                    .filter((v) => v !== "")
                     .map((_, i) => {
                       if (i === 0) {
                         return (
@@ -242,6 +243,7 @@ export const Stub = () => {
                   stub.cookies
                     .replaceAll("\r", "")
                     .split("\n")
+                    .filter((v) => v !== "")
                     .map((v, i) => (
                       <Text key={"cookie_" + i} mb="1" h="1.5rem">
                         {v}
