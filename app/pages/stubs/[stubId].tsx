@@ -99,7 +99,7 @@ export const Stub = () => {
               _hover={{ bg: "teal.400", borderColor: "teal.400" }}
               leftIcon={<DownloadIcon />}
               onClick={async () => {
-                const { path, method, contentType, statusCode, response, sleep } = stub
+                const { path, method, contentType, statusCode, response, cookies, sleep } = stub
                 const blob = new Blob(
                   [
                     JSON.stringify(
@@ -109,6 +109,13 @@ export const Stub = () => {
                         contentType,
                         statusCode,
                         response,
+                        cookies:
+                          cookies === ""
+                            ? null
+                            : cookies
+                                .replaceAll("\r", "")
+                                .split("\n")
+                                .filter((v) => v !== ""),
                         sleep: sleep * 1000,
                       },
                       null,
@@ -166,6 +173,21 @@ export const Stub = () => {
                 <Text mb="1" h="1.5rem">
                   statusCode
                 </Text>
+                {stub.cookies !== "" &&
+                  stub.cookies
+                    .replaceAll("\r", "")
+                    .split("\n")
+                    .filter((v) => v !== "")
+                    .map((_, i) => {
+                      if (i === 0) {
+                        return (
+                          <Text key={"cookie_title_" + i} mb="1" h="1.5rem">
+                            cookies
+                          </Text>
+                        )
+                      }
+                      return <Text key={"cookie_title_" + i} mb="1" h="1.5rem"></Text>
+                    })}
                 {stub.sleep !== 0 && (
                   <>
                     <Text mb="1" h="1.5rem">
@@ -217,6 +239,16 @@ export const Stub = () => {
                 <Text mb="1" h="1.5rem">
                   {stub.statusCode}
                 </Text>
+                {stub.cookies !== "" &&
+                  stub.cookies
+                    .replaceAll("\r", "")
+                    .split("\n")
+                    .filter((v) => v !== "")
+                    .map((v, i) => (
+                      <Text key={"cookie_" + i} mb="1" h="1.5rem">
+                        {v}
+                      </Text>
+                    ))}
                 {stub.sleep !== 0 && (
                   <>
                     <Text mb="1" h="1.5rem">

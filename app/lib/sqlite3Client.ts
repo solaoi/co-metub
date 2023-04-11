@@ -30,6 +30,7 @@ type StubTableType = {
   contentType: string
   statusCode: string
   response: string
+  cookies: string
   sleep: number
   logs: string
   ntimesError: number

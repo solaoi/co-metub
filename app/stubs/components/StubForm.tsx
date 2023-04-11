@@ -44,6 +44,12 @@ export function StubForm<S extends z.ZodType<any, any>>(props: FormProps<S>) {
         ]}
       />
       <LabeledTextField name="statusCode" label="StatusCode" placeholder="200" />
+      <LabeledTextAreaField
+        name="cookies"
+        label="Cookies"
+        placeholder="KEY1=VAL1; path=/; expires=Sat, 24 Nov 2012 08:34:29 GMT&#13;KEY2=VAL2; path=/; expires=Sat, 24 Nov 2012 08:34:29 GMT"
+        rows="4"
+      />
       <LabeledTextAreaField name="response" label="Response" placeholder="Response" rows="5" />
       <LabeledTextAreaField name="memo" label="Memo" placeholder="Any additional comments" />
       <Card heading="Optional" bgColor="#E2E8F0">

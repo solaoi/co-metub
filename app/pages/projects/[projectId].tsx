@@ -165,13 +165,20 @@ export const Project = () => {
                 onClick={async () => {
                   const { stubs } = await invoke(getStubs, { where: { projectId: projectId } })
                   const stubsForExport = stubs.map(
-                    ({ path, method, contentType, statusCode, response, sleep }) => {
+                    ({ path, method, contentType, statusCode, response, cookies, sleep }) => {
                       return {
                         path: `/api${project.basePath}${path}`,
                         method,
                         contentType,
                         statusCode,
                         response,
+                        cookies:
+                          cookies === ""
+                            ? null
+                            : cookies
+                                .replaceAll("\r", "")
+                                .split("\n")
+                                .filter((v) => v !== ""),
                         sleep: sleep * 1000,
                       }
                     }
