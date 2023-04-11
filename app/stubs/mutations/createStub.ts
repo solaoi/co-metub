@@ -23,6 +23,7 @@ const CreateStub = z.object({
   statusCode: z
     .string()
     .regex(/^\d{3}$/, { message: "The status code must be a three-digit number." }),
+  cookies: z.string().default(""),
   response: z.string().default(""),
   sleep: z.number().min(0).default(0),
   ntimesError: z.number().min(0).default(0),

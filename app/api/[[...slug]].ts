@@ -34,6 +34,7 @@ const Handler: BlitzApiHandler = async (req: BlitzApiRequest, res: BlitzApiRespo
     statusCode,
     sleep,
     response,
+    cookies,
     logs,
     ntimesError,
     ntimesErrorStatusCode,
@@ -86,7 +87,21 @@ const Handler: BlitzApiHandler = async (req: BlitzApiRequest, res: BlitzApiRespo
     res.status(Number(ntimesErrorStatusCode)).end()
     return
   }
-  res.status(Number(statusCode)).setHeader("Content-Type", contentType).end(response)
+  if (cookies !== "") {
+    res
+      .status(Number(statusCode))
+      .setHeader("Content-Type", contentType)
+      .setHeader(
+        "Set-Cookie",
+        cookies
+          .replaceAll("\r", "")
+          .split("\n")
+          .filter((v) => v !== "")
+      )
+      .end(response)
+  } else {
+    res.status(Number(statusCode)).setHeader("Content-Type", contentType).end(response)
+  }
 }
 
 export default Handler
